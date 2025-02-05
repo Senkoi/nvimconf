@@ -51,18 +51,45 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("config.lsp")
+            -- require("config.lsp")
+		end,
+	},
+	{
 		"williamboman/mason.nvim",
 		config = function()
 			-- require("config.lsp")
 			require("mason").setup()
 		end,
 	},
-	{
+    {
 		"williamboman/mason-lspconfig.nvim",
-		"neovim/nvim-lspconfig",
-		config = function()
-			-- require("config.lsp")
-            require("config.lsp")
-		end,
-	}
+        config = function()
+            require("mason-lspconfig").setup()
+            require("config.mason")
+        end,
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("config.treesitter")
+        end,
+    },
+    {
+        "kawre/leetcode.nvim",
+        build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            -- "ibhagwan/fzf-lua",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+        opts = {
+            -- configuration goes here
+            lang = "csharp",
+        },
+    },
 })

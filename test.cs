@@ -2,6 +2,8 @@
 
 public class test
 {
+    
+    public string test;
     private string _test;
     
     public string Test
