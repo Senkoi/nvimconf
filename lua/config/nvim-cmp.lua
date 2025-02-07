@@ -25,10 +25,19 @@
        end
      end,
      ["<CR>"] = cmp.mapping.confirm { select = true },
+     -- ["<TAB>"] = cmp.mapping.confirm { select = true },
      ["<C-e>"] = cmp.mapping.abort(),
-     ["<Esc>"] = cmp.mapping.close(),
+     -- ["<Esc>"] = cmp.mapping.close(),
      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
      ["<C-f>"] = cmp.mapping.scroll_docs(4),
+     ["<C-[>"] = cmp.mapping(function(fallback)
+          cmp.mapping.close()(fallback)  -- 关闭补全菜单
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)  -- 切换到 normal 模式
+    end),
+     ["<Esc>"] = cmp.mapping(function(fallback)
+          cmp.mapping.close()(fallback)  -- 关闭补全菜单
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)  -- 切换到 normal 模式
+    end),
    },
    sources = {
      { name = "nvim_lsp" }, -- For nvim-lsp

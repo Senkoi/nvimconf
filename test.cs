@@ -1,11 +1,16 @@
-#include <stdio.h>
 
-public class test
+public class NewBaseType
 {
-    
+    private int myProperty;
+}
+skdfjs
+
+public class test : NewBaseType
+{
+
     public string test;
     private string _test;
-    
+
     public string Test
     {
         get { return _test; }
@@ -13,48 +18,20 @@ public class test
     }
 
 
-    public int MyProperty { get; set; }
+    public int MyProperty { get => myProperty; set => myProperty = value; }
     private string myVar;
+
     public string Property
     {
         get { return myVar; }
         set { myVar = value; }
     }
-    private 
-        myVar;
-    public 
-        MyProperty
+
+    public string MyVar { get => myVar; set => myVar = value; }
+
+    public void Ttest()
     {
-        get { return myVar; }
-        set { myVar = value; }
-    }
-    private string Age ;
-    public string MyProperty
-    {
-        get { return ; }
-        set {  = value; }
-    }
-    private string Age;
-    public string Age
-    {
-        get { return ; }
-        set {  = value; }
-    }
-    private string Age;
-    public string Age MyProperty
-    {
-        get { return ; }
-        set {  = value; }
-    }
-    private string ;
-    public string MyProperty
-    {
-        get { return myVar; }
-        set { myVar = value; }
+        myVar = "aaa";
     }
 }
 
-public Main() {
-    var t = new test();
-    
-}

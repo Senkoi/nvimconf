@@ -19,6 +19,27 @@ local set_qflist = function(buf_num, severity)
   -- open quickfix by default
   vim.cmd([[copen]])
 end
+-- 定义一个函数用于切换 quickfix 窗口
+function ToggleQuickfix()
+  -- 检查当前是否有 quickfix 窗口打开
+  local qf_exists = false
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    -- 判断缓冲区的 buftype 是否为 "quickfix"
+    if vim.api.nvim_buf_get_option(buf, "buftype") == "quickfix" then
+      qf_exists = true
+      break
+    end
+  end
+
+  if qf_exists then
+    -- 如果 quickfix 窗口已存在，则关闭它
+    vim.cmd("cclose")
+  else
+    -- 否则，打开 quickfix 窗口
+    vim.cmd("copen")
+  end
+end
 
 local custom_attach = function(client, bufnr)
   -- Mappings.
@@ -29,6 +50,10 @@ local custom_attach = function(client, bufnr)
     keymap.set(mode, l, r, opts)
   end
 
+
+  map("n", ";q", function()
+      ToggleQuickfix()
+  end, { desc = "toggle quickfix" })
   map("n", "gd", vim.lsp.buf.definition, { desc = "go to definition" })
   map("n", "<C-]>", vim.lsp.buf.definition)
   map("n", "K", vim.lsp.buf.hover)
@@ -304,3 +329,9 @@ diagnostic.config {
 lsp.handlers["textDocument/hover"] = lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
+
+
+
+return {
+    custom_attach = custom_attach,
+}
