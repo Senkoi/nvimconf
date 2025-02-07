@@ -99,4 +99,36 @@ require("lazy").setup({
         -- use opts = {} for passing setup options
         -- this is equivalent to setup({}) function
     },
+    {
+        "jay-babu/mason-nvim-dap.nvim",
+        "mufssenegger/nvim-dap",
+        config = function()
+            require("config.dap")
+        end,
+    },
+    { 
+        "rcarriga/nvim-dap-ui",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio"
+        }
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        keys = {
+            {
+              "<leader>?",
+              function()
+                require("which-key").show({ global = false })
+              end,
+              desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+    },
 })

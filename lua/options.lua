@@ -1,3 +1,4 @@
+local keymap = vim.keymap
 local fn = vim.fn
 local api = vim.api
 
@@ -31,6 +32,8 @@ else
   return
 end
 
+-- Custom mapping <leader> (see `:h mapleader` for more info)
+vim.g.mapleader = ";"
 
 
 --
@@ -61,3 +64,35 @@ vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
 
 --- vim.g.python3_host_prog = "/home/ash/anaconda3/bin/python3"
+
+
+-- Edit and reload nvim config file quickly
+keymap.set("n", "<leader>ev", "<cmd>tabnew $MYVIMRC <bar> tcd %:h<cr>", {
+  silent = true,
+  desc = "open init.lua",
+})
+
+keymap.set("n", "<leader>sv", function()
+  vim.cmd([[
+      update $MYVIMRC
+      source $MYVIMRC
+    ]])
+  vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
+end, {
+  silent = true,
+  desc = "reload init.lua",
+})
+
+-- insert semicolon in the end
+keymap.set("i", "<A-;>", "<Esc>miA;<Esc>`ii")
+
+-- Go to the beginning and end of current line in insert mode quickly
+keymap.set("i", "<C-A>", "<HOME>")
+keymap.set("i", "<C-E>", "<END>")
+
+-- Go to beginning of command in command-line mode
+keymap.set("c", "<C-A>", "<HOME>")
+
+-- Delete the character to the right of the cursor
+keymap.set("i", "<C-D>", "<DEL>")
+
