@@ -2,7 +2,7 @@ local config_dir = vim.fn.stdpath("config")
 
 require('options')
 require('mapping')
-require('plugins')
+require('plugins-loader')
 require('colorscheme')
 
 vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/options.vim"))
