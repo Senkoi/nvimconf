@@ -303,7 +303,50 @@ capabilities.textDocument.foldingRange = {
 --     capabilities = capabilities,
 --   }
 -- end
-
+-- lspconfig.omnisharp.setup {
+-- 
+--     on_attach = custom_attach,
+-- 
+--     capabilities = capabilities,
+-- 
+--     cmd = { "omnisharp" },
+--     RoslynExtensionsOptions = {
+--         -- Enables support for roslyn analyzers, code fixes and rulesets.
+--         EnableAnalyzersSupport = true,
+--         -- Enables support for showing unimported types and unimported extension
+--         -- methods in completion lists. When committed, the appropriate using
+--         -- directive will be added at the top of the current file. This option can
+--         -- have a negative impact on initial completion responsiveness,
+--         -- particularly for the first few completion sessions after opening a
+--         -- solution.
+--         EnableImportCompletion = true,
+--         -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
+--         -- true
+--         AnalyzeOpenDocumentsOnly = nil,
+--     },
+-- 
+--     enable_ms_build_load_projects_on_demand = false,
+-- 
+--     enable_editorconfig_support = true,
+-- 
+--     enable_roslyn_analysers = true,
+-- 
+--     enable_import_completion = true,
+-- 
+--     organize_imports_on_format = true,
+-- 
+--     enable_decompilation_support = true,
+-- 
+--     analyze_open_documents_only = false,
+--     -- root_dir = function(fname)
+--     --     -- 这里尝试从当前文件开始向上查找 .git 目录，
+--     --     -- 如果没有找到则使用当前工作目录作为根目录
+--     --     return require("lspconfig.util").find_git_ancestor(fname) or vim.fn.getcwd()
+--     -- end,
+-- 
+--     filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "targets" },
+-- 
+-- } 
 -- Change diagnostic signs.
 fn.sign_define("DiagnosticSignError", { text = "�", texthl = "DiagnosticSignError" })
 fn.sign_define("DiagnosticSignWarn", { text = "⚠️", texthl = "DiagnosticSignWarn" })
@@ -313,7 +356,7 @@ fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHin
 -- global config for diagnostic
 diagnostic.config {
   underline = false,
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   severity_sort = true,
 }
