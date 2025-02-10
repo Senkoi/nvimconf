@@ -28,7 +28,7 @@
      -- ["<TAB>"] = cmp.mapping.confirm { select = true },
      ["<C-e>"] = cmp.mapping.abort(),
      -- ["<Esc>"] = cmp.mapping.close(),
-     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
      ["<C-f>"] = cmp.mapping.scroll_docs(4),
      ["<C-[>"] = cmp.mapping(function(fallback)
           cmp.mapping.close()(fallback)  -- 关闭补全菜单
