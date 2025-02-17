@@ -35,7 +35,7 @@ end, {
 })
 
 -- insert semicolon in the end
-keymap.set("i", "<A-;>", "<Esc>miA;<Esc>`ii")
+keymap.set("i", "<A-;>", "<Esc>A;")
 
 -- Go to the beginning and end of current line in insert mode quickly
 keymap.set("i", "<C-A>", "<HOME>")
@@ -46,4 +46,7 @@ keymap.set("c", "<C-A>", "<HOME>")
 
 -- Delete the character to the right of the cursor
 keymap.set("i", "<C-D>", "<DEL>")
+
+-- Terminal
+keymap.set("t", "<C-t>", "<C-\\><C-n>:CFloatTerm<CR>")
 

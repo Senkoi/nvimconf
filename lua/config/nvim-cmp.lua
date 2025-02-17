@@ -13,7 +13,7 @@
      ["<C-n>"] = function(fallback)
        if cmp.visible() then
          cmp.select_next_item()
-       else
+      else
          fallback()
        end
      end,
