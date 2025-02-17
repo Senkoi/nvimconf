@@ -35,7 +35,7 @@ end, {
 })
 
 -- insert semicolon in the end
-keymap.set("i", "<A-;>", "<Esc>A;")
+keymap.set("i", "<Leader>;", "<Esc>A;")
 
 -- Go to the beginning and end of current line in insert mode quickly
 keymap.set("i", "<C-A>", "<HOME>")
