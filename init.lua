@@ -7,4 +7,4 @@ require('colorscheme')
 
 vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/options.vim"))
 vim.cmd("source " .. vim.fs.joinpath(config_dir, "viml_conf/plugins.vim"))
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
