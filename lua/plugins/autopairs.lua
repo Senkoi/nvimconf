@@ -1,3 +1,4 @@
+if not vim.g.vscode then
 return {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
@@ -5,3 +6,5 @@ return {
     -- use opts = {} for passing setup options
     -- this is equivalent to setup({}) function
 }
+end
+return {}
